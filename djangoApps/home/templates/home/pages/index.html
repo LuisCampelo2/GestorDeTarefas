@@ -1,0 +1,15 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+<div class="main">
+    {% if user.is_authenticated %}
+        <h1>Tarefas</h1>
+        <a href="{% url 'home:logout' %}">Sair</a>
+    {% else %}
+        <div class="navegacao">
+            <a href="{% url 'home:login' %}">Log-in</a>
+            <a href="{% url 'home:criarconta' %}">Criar Conta</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
