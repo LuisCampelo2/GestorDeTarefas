@@ -3,10 +3,17 @@
     {% include "home/partials/head.html" %}
 </head>
 <body>
-    {% include "home/partials/header.html" %}
-    
-    {% block content %}
-    {% endblock %}
+    <div class="content"> 
+        {% include "home/partials/header.html" %}
+        
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
+<footer class="footer">
+    <p>&copy; 2024 Luis Filipe. Todos os direitos reservados.</p>
+    <p>Email: luisfilipecab@gmail.com</p>
+
+</footer>
 </html>
 

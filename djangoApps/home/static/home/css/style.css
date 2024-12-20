@@ -1,9 +1,12 @@
-body {
+html,body {
+    height: 100%;
+    margin: 0;
     display: flex;
-    justify-content: center;  /* Centraliza horizontalmente */
-    align-items: center;      /* Centraliza verticalmente */
-    min-height: 100vh;         /* Garante que o body tenha a altura total da tela */
-    margin: 0;                 /* Remove a margem padrão do body */
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+    margin-top: 60px; /* Ajuste esse valor com base na altura do seu header */
 }
 
 .titulo{
@@ -140,8 +143,6 @@ body {
 
 /* Estiliza os labels dos campos */
 .cadastro_cliente_form label {
-    font-size: 1.1rem;
-    font-weight: bold;
     color: #333;
     margin-bottom: 5px;
 }
@@ -176,7 +177,7 @@ body {
 
 /* Estiliza o botão de envio */
 .cadastro_cliente_form .button {
-    background-color: #007bff;
+    background-color: black;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -188,6 +189,7 @@ body {
 
 .cadastro_cliente_form .button:hover {
     background-color: #0056b3;
+    transform: scale(1.03);
 }
 
 /* Estilo geral para a tabela */
@@ -411,8 +413,7 @@ body {
 
 /* Estiliza os labels dos campos do formulário */
 .criar_tarefas_form label {
-    font-size: 1.1rem;
-    font-weight: bold;
+
     color: #333;
     margin-bottom: 5px;
 }
@@ -447,7 +448,7 @@ body {
 
 /* Estiliza o botão de envio */
 .criar_tarefas_form button {
-    background-color: #007bff;
+    background-color: black;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -460,16 +461,12 @@ body {
 /* Estilo para o botão quando o mouse passa por cima */
 .criar_tarefas_form button:hover {
     background-color: #0056b3;
+    transform: scale(1.06);
+
 }
 
 /* Estilos gerais para telas grandes (desktop) */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
+
 
 .criar_tarefas_form {
     display: flex;
@@ -492,6 +489,14 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.footer{
+    
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333;
+    border-top: 1px solid #ddd; /* Linha superior para separação */
+}
 /* Media query para dispositivos móveis */
 @media (max-width: 768px) {
     /* Ajuste a largura dos formulários */
