@@ -24,6 +24,8 @@ ENV PATH="/scripts:/venv/bin:$PATH"
 # Expõe a porta 8000, que é a porta padrão do Django
 EXPOSE 8000
 
+# Definindo variável para o WSGI (garante que o Gunicorn seja executado com o WSGI do Django)
+ENV DJANGO_SETTINGS_MODULE=project.settings
 
 # Executa a pasta script
 CMD ["/bin/sh", "/scripts/commands.sh"]

@@ -1,0 +1,578 @@
+html,body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+    margin-top: 60px; /* Ajuste esse valor com base na altura do seu header */
+}
+
+.titulo{
+        position: fixed;   /* Fixa o header no topo */
+        top: 0;            /* Garante que o header fique no topo da página */
+        left: 0;           /* Garante que o header ocupe toda a largura da tela */
+        width: 100%;       /* Ocupa toda a largura da tela */
+        height: 80px;      /* Defina a altura que você deseja para o header */
+        background-color: #030303; /* Cor de fundo */
+        color: white;      /* Cor do texto */
+        display: flex;     /* Usando flexbox para centralizar o conteúdo dentro do header */
+        align-items: center;  /* Alinha o conteúdo verticalmente */
+        justify-content: center;  /* Centraliza o conteúdo horizontalmente */
+        z-index: 1000;     /* Garante que o header fique acima de outros elementos */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional para destacar o header */
+    }
+.titulo a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navegacao {
+    position: fixed;        /* Fixa a navegação no lugar */
+    top: 0;                 /* Coloca a navegação no topo */
+    right: 0;               /* Coloca a navegação no canto direito */
+    background-color: #030303;
+    padding: 20px;          /* Adiciona um pouco de espaço interno */
+    border-radius: 8px;     /* Deixa os cantos arredondados */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente os links dentro da navegação */
+    align-items: center;     /* Centraliza verticalmente os links */
+    z-index: 1001;            /* Garante que a navegação fique acima de outros elementos */
+}
+
+.navegacao a {
+    color: white;           /* Altera a cor dos links para branco */
+    text-decoration: none;
+    margin: 10px;         /* Adiciona espaço entre os links */
+}
+
+.criar_tarefas_form{
+    display: flex;
+    flex-direction: column;  /* Organiza os itens em uma coluna, empilhando-os */
+    justify-content: center; /* Centraliza os itens verticalmente */
+    align-items: center;     /* Centraliza os itens horizontalmente */
+    padding: 20px;           /* Adiciona um pouco de espaço interno */
+    border-radius: 8px;      /* Deixa os cantos arredondados */
+    gap: 10px;               /* Adiciona um espaço entre os itens */
+}
+
+.login {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do formulário de login */
+.login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels dos campos */
+.login_form label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Campos de entrada */
+.login_form input {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Foco nos campos */
+.login_form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botão de envio */
+.login_form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeito hover no botão */
+.login_form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Estilo de erros */
+.login_form .errorlist {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.cadastramento {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza o formulário */
+.cadastro_cliente_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estiliza os labels dos campos */
+.cadastro_cliente_form label {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Estiliza os campos de entrada */
+.cadastro_cliente_form input,
+.cadastro_cliente_form select,
+.cadastro_cliente_form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Estilo para o foco nos campos de entrada */
+.cadastro_cliente_form input:focus,
+.cadastro_cliente_form select:focus,
+.cadastro_cliente_form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estiliza os erros de validação */
+.cadastro_cliente_form .field-errors {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Estiliza o botão de envio */
+.cadastro_cliente_form .button {
+    background-color: black;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cadastro_cliente_form .button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+/* Estilo geral para a tabela */
+.table_index {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho da tabela */
+.table_index thead tr {
+    background-color: black; /* Cor do cabeçalho */
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* Estilo para células do cabeçalho */
+.table_index th, .table_index td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+/* Linhas alternadas para melhor leitura */
+.table_index tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table_index tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Cor de fundo ao passar o mouse */
+.table_index tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para ícones de ação */
+.icone_editar,
+.icone_excluir {
+    width: 24px; /* Tamanho do ícone */
+    height: 24px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+
+/* Efeito de zoom ao passar o mouse nos ícones */
+.icone_editar:hover,
+.icone_excluir:hover {
+    transform: scale(1.2);
+}
+
+/* Ícones de edição e exclusão */
+.icone_editar {
+    border-radius: 50%;
+    background-color: #4CAF50; /* Cor do fundo (verde) */
+    padding: 5px;
+}
+
+.icone_excluir {
+    border-radius: 50%;
+    background-color: #f44336; /* Cor do fundo (vermelho) */
+    padding: 5px;
+}
+
+/* Estilo para o container de exclusão */
+.excluir {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Título */
+.excluir h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #f44336; /* Cor vermelha para destacar */
+}
+
+/* Texto de confirmação */
+.excluir p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Botão de excluir */
+.btn_excluir {
+    background-color: #f44336; /* Vermelho para destacar perigo */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeito hover no botão de excluir */
+.btn_excluir:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+/* Botão de cancelar */
+.btn-secondary {
+    background-color: #9e9e9e; /* Cinza neutro */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efeito hover no botão de cancelar */
+.btn-secondary:hover {
+    background-color: #757575;
+    transform: scale(1.05);
+}
+
+/* Espaçamento entre os botões */
+.excluir form button,
+.excluir form .btn-secondary {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Estiliza o container do formulário */
+.editar_tarefas {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza o formulário */
+.editar_tarefas_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estiliza os labels dos campos */
+.editar_tarefas_form label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estiliza os campos de entrada */
+.editar_tarefas_form input,
+.editar_tarefas_form textarea,
+.editar_tarefas_form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.editar_tarefas_form input:focus,
+.editar_tarefas_form textarea:focus,
+.editar_tarefas_form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estiliza os erros de validação */
+.editar_tarefas_form .field-errors {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+/* Estiliza o botão de envio */
+.editar_tarefas_form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.editar_tarefas_form button:hover {
+    background-color: #0056b3;
+}
+/* Estiliza o container do formulário de criação de tarefas */
+.criar_tarefas {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza o formulário de criação de tarefas */
+.criar_tarefas_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estiliza os labels dos campos do formulário */
+.criar_tarefas_form label {
+
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Estiliza os campos de entrada do formulário */
+.criar_tarefas_form input,
+.criar_tarefas_form textarea,
+.criar_tarefas_form select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Efeito para quando os campos estão em foco */
+.criar_tarefas_form input:focus,
+.criar_tarefas_form textarea:focus,
+.criar_tarefas_form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estiliza os erros de validação dos campos */
+.criar_tarefas_form .field-errors {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Estiliza o botão de envio */
+.criar_tarefas_form button {
+    background-color: black;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para o botão quando o mouse passa por cima */
+.criar_tarefas_form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.06);
+
+}
+
+/* Estilos gerais para telas grandes (desktop) */
+
+
+.criar_tarefas_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.criar_tarefas {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer{
+    
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333;
+    border-top: 1px solid #ddd; /* Linha superior para separação */
+}
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Ajuste a largura dos formulários */
+    .criar_tarefas_form,
+    .editar_tarefas_form,
+    .login_form,
+    .cadastro_cliente_form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Ajuste os campos de entrada para se adaptarem melhor à tela menor */
+    .criar_tarefas_form input,
+    .criar_tarefas_form textarea,
+    .criar_tarefas_form select,
+    .editar_tarefas_form input,
+    .editar_tarefas_form textarea,
+    .editar_tarefas_form select {
+        width: 100%; /* Garante que os campos ocupem toda a largura disponível */
+    }
+
+    /* Ajuste do tamanho da fonte para melhor legibilidade */
+    .criar_tarefas_form label,
+    .editar_tarefas_form label,
+    .login_form label,
+    .cadastro_cliente_form label {
+        font-size: 1rem; /* Reduz um pouco o tamanho da fonte */
+    }
+
+    .criar_tarefas_form button,
+    .editar_tarefas_form button,
+    .login_form button,
+    .cadastro_cliente_form .button {
+        width: 100%; /* Torna o botão mais largo para caber na tela */
+        padding: 12px;
+    }
+
+    /* Ajuste o layout do título e navegação para telas pequenas */
+    .titulo {
+        font-size: 1.5rem; /* Reduz o tamanho do título */
+        height: auto; /* Deixa o título mais compacto */
+    }
+
+    .navegacao {
+        position: static; /* Remove o position fixado para telas pequenas */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px; /* Espaçamento entre a navegação e o conteúdo */
+    }
+
+    .navegacao a {
+        margin: 5px 0; /* Reduz a margem entre os links de navegação */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajusta mais ainda para telas menores, como smartphones */
+    .titulo {
+        font-size: 1.2rem; /* Reduz o tamanho do título para telas muito pequenas */
+    }
+
+    /* Ajuste adicional nos botões */
+    .criar_tarefas_form button,
+    .editar_tarefas_form button {
+        padding: 10px 15px; /* Ajusta o padding para botões menores */
+    }
+
+    /* Ajusta o campo de entrada e textarea */
+    .criar_tarefas_form input,
+    .criar_tarefas_form textarea,
+    .criar_tarefas_form select {
+        font-size: 14px; /* Ajusta o tamanho da fonte para melhor legibilidade */
+        padding: 10px;
+    }
+}
+
+
+
