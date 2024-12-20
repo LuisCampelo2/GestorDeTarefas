@@ -2,13 +2,10 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Project, Task
+from .models import *
 
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'owner', 'created_at')
+@admin.register(Tarefas)
+class Tarefas(admin.ModelAdmin):
+    list_display=('titulo' , 'descricao' , 'data_vencimento' , 'prioridade' , 'status' , 'usuario')
+    list_filter=('titulo',)
 
-@admin.register(Task)
-class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'project', 'priority', 'status', 'due_date')
-    list_filter = ('priority', 'status')

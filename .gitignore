@@ -161,4 +161,4 @@ cython_debug/
 
 /data
 
-djangoApps/staticfiles
+djangoApps/static

@@ -1,11 +1,8 @@
 {% extends "home/base.html" %}
 {% block content %}
-<div class= "navegacao">
-    <a href="{% url 'home:criarconta' %}">Criar Conta</a>
-</div>
-<div class="login">
+<div class="criar_tarefas">
     <form 
-    class="login_form"
+    class="criar_tarefas_form"
     action="{{form_action}}"
     method="POST"
     >
@@ -15,7 +12,7 @@
             {{field}}
             {{field.errors}}
         {% endfor %}
-        <button type="submit">entrar</button>
+        <button type="submit">enviar</button>
     </form>
 </div> 
 {% endblock content %}

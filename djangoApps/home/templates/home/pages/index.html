@@ -1,15 +1,56 @@
 {% extends "home/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="main">
     {% if user.is_authenticated %}
-        <h1>Tarefas</h1>
-        <a href="{% url 'home:logout' %}">Sair</a>
+    <h2>Minhas Tarefas</h2>
+    <table border="1" class="table_index">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+                <th>Data de Vencimento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarefa in tarefas %}
+                <tr>
+                    <td>{{ tarefa.titulo }}</td>
+                    <td>{{ tarefa.descricao }}</td>
+                    <td>{{ tarefa.get_prioridade_display }}</td>
+                    <td>{{ tarefa.get_status_display }}</td>
+                    <td>{{ tarefa.data_vencimento }}</td>
+                    <td>
+                        <a href="{% url 'home:editartarefa' tarefa.id %}"><img src="{% static 'home/img/editar.png' %}" alt="Editar tarefa" class="icone_editar" ></a>
+                        <a href="{% url 'home:apagartarefa' tarefa.id %}"><img src="{% static 'home/img/excluir.png' %}" alt="Excluir tarefa" class="icone_excluir"></a>
+                        
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">Você não possui tarefas cadastradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
+
+</div>
+<div class="navegacao">
+    <a href="{% url 'home:logout' %}">Sair</a>
+    <a href="{% url 'home:criartarefa' %}">Criar tarefa</a>
+</div>
     {% else %}
         <div class="navegacao">
             <a href="{% url 'home:login' %}">Log-in</a>
             <a href="{% url 'home:criarconta' %}">Criar Conta</a>
         </div>
     {% endif %}
-</div>
+           
 {% endblock content %}
