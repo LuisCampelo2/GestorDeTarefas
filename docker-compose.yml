@@ -12,9 +12,9 @@ services:
     env_file:
       - ./dotenv_files/.env
     depends_on:
-      - mysql
+      - mysql_service
 
-  mysql:
+  mysql_service:
     container_name: mysql
     image: mysql:8.0
     volumes:
