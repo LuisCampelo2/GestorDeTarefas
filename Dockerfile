@@ -10,16 +10,16 @@ WORKDIR /djangoApps
 # Copia a pasta "djangoApps" e "scripts" para dentro do container.
 COPY djangoApps /djangoApps
 COPY scripts /scripts/
-RUN chmod +x /scripts/wait_mysql.sh /scripts/commands.sh
 
+# Torna os scripts executáveis
+RUN chmod +x /scripts/wait_mysql.sh /scripts/commands.sh /scripts/migrate.sh
 
 # Cria um ambiente virtual e instala as dependências
 RUN python -m venv /venv && \
     /venv/bin/pip install --upgrade pip && \
     /venv/bin/pip install -r /djangoApps/requirements.txt
 
-# Adiciona a pasta scripts e venv/bin 
-# no $PATH do container.
+# Adiciona a pasta scripts e venv/bin no $PATH do container
 ENV PATH="/scripts:/venv/bin:$PATH"
 
 # Expõe a porta 8000, que é a porta padrão do Django
@@ -28,5 +28,10 @@ EXPOSE 8000
 # Definindo variável para o WSGI (garante que o Gunicorn seja executado com o WSGI do Django)
 ENV DJANGO_SETTINGS_MODULE=project.settings
 
-# Executa a pasta script
-CMD ["/bin/sh", "/scripts/commands.sh"]
+# Executa os comandos na ordem desejada
+CMD /bin/sh -c "/scripts/wait_mysql.sh && \
+                /scripts/makemigrations.sh && \
+                /scripts/migrate.sh && \
+                /scripts/collectstatic.sh && \
+                /scripts/commands.sh && \
+                gunicorn djangoApps.wsgi:application --bind 0.0.0.0:8000"
