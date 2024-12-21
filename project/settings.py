@@ -58,11 +58,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Configuração do banco de dados MySQL
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',  # Banco de dados SQLite local
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_gestordetarefas',  # Nome do banco de dados
+        'USER': 'luisf',               # Nome de usuário
+        'PASSWORD': 'tdorCPSWkhtmeKvcSzQRUPgi2Dun4p0s',  # Senha
+        'HOST': 'dpg-ctji3hrqf0us739cbepg-a.oregon-postgres.render.com',  # Host externo
+        'PORT': '5432',                # Porta padrão do PostgreSQL
     }
+}
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
