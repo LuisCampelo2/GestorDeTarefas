@@ -9,7 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  overflow-x: hidden; /* Evita rolagem horizontal */
 }
 .content {
   flex: 1;
