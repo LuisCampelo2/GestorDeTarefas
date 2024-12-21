@@ -6,3 +6,4 @@ done
 
 echo "✅ MySQL Database Started Successfully ($MYSQL_HOST:$MYSQL_PORT)"
 
+

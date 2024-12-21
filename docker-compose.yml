@@ -15,7 +15,7 @@ services:
       - mysql_service
 
   mysql_service:
-    container_name: mysql
+    container_name: mysql_service
     image: mysql:8.0
     volumes:
       - ./data/mysql/data:/var/lib/mysql
@@ -23,6 +23,7 @@ services:
       - ./dotenv_files/.env
     ports:
       - "3306:3306"
+
 
 
 
