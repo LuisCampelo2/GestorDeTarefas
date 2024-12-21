@@ -57,17 +57,25 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Configuração do banco de dados MySQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',  # Nome do banco de dados
-        'USER': 'root',  # Usuário do banco de dados
-        'PASSWORD': 'DGsPthSmNsHCJmZkJmkaBRNsdLMsvPDj',  # Senha do banco de dados
-        'HOST': 'mysql.railway.internal',  # Host do banco de dados (interno do Railway)
-        'PORT': '3306',  # Porta do MySQL
+if os.getenv('DJANGO_ENV') == 'production':  # Você pode definir esta variável no seu ambiente de produção
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('MYSQL_DATABASE', 'railway'),
+            'USER': os.getenv('MYSQL_USER', 'root'),
+            'PASSWORD': os.getenv('MYSQL_PASSWORD', 'your_password'),
+            'HOST': os.getenv('MYSQL_HOST', 'junction.proxy.rlwy.net'),  # Ou o host correto
+            'PORT': os.getenv('MYSQL_PORT', '19373'),
+        }
     }
-}
-
+else:
+    # Usar SQLite no ambiente local
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',  # Banco de dados SQLite local
+        }
+    }
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
