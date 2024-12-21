@@ -10,6 +10,7 @@ WORKDIR /djangoApps
 # Copia a pasta "djangoApps" e "scripts" para dentro do container.
 COPY djangoApps /djangoApps
 COPY scripts /scripts/
+RUN chmod +x /scripts/wait_mysql.sh /scripts/commands.sh
 
 
 # Cria um ambiente virtual e instala as dependências
