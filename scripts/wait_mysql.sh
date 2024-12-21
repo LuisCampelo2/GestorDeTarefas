@@ -1,9 +1,13 @@
-#!/bin/sh
-while ! nc -z $MYSQL_HOST $MYSQL_PORT; do
-  echo "🟡 Waiting for MySQL Database Startup ($MYSQL_HOST $MYSQL_PORT) ..."
-  sleep 10
+#!/bin/bash
+
+# Espera o MySQL ficar disponível
+until nc -z -v -w30 mysql_service 3306
+do
+  echo "Aguardando MySQL iniciar..."
+  sleep 60
 done
 
-echo "✅ MySQL Database Started Successfully ($MYSQL_HOST:$MYSQL_PORT)"
+echo "MySQL está disponível. Continuando com o processo."
+
 
 
