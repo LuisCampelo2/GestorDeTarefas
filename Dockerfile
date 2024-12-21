@@ -29,12 +29,3 @@ ENV DJANGO_SETTINGS_MODULE=project.settings
 
 # Executa a pasta script
 CMD ["/bin/sh", "/scripts/commands.sh"]
-
-
-
-
-
-
-
-
-
