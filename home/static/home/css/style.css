@@ -1,9 +1,15 @@
+*{
+  box-sizing: border-box; /* Inclui padding e bordas na largura total */
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  overflow-x: hidden; /* Evita rolagem horizontal */
 }
 .content {
   flex: 1;
@@ -503,7 +509,7 @@ body {
   .login_form,
   .cadastro_cliente_form {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
   }
 
   /* Ajuste os campos de entrada para se adaptarem melhor à tela menor */
@@ -529,7 +535,8 @@ body {
   .login_form button,
   .cadastro_cliente_form .button {
     width: 100%; /* Torna o botão mais largo para caber na tela */
-    padding: 12px;
+    padding: 8px 12px;
+    font-size: 14px;
   }
 
   /* Ajuste o layout do título e navegação para telas pequenas */

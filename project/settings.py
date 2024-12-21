@@ -1,17 +1,15 @@
 from pathlib import Path
-import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret key (altere conforme necessário em produção)
-SECRET_KEY = 'django-insecure-cy5(&kho(hix8nco^45h(zvr#qt#4lbr2e%t7ee9cu4d5%-+si'
+SECRET_KEY = config('SECRET_KEY')
 
-# Debug mode (não use em produção)
-DEBUG = True
 
-# Allowed hosts (alterar conforme o ambiente de produção)
-ALLOWED_HOSTS = ['gestordetarefas.onrender.com', '127.0.0.1', 'localhost']
+DEBUG = config('DEBUG', default=False, cast=bool)  # Converte para booleano
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=lambda v: v.split(','))  # Converte para lista
 
 # Application definition
 INSTALLED_APPS = [
@@ -57,16 +55,19 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 # Configuração do banco de dados MySQL
+from decouple import config
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_gestordetarefas',  # Nome do banco de dados
-        'USER': 'luisf',               # Nome de usuário
-        'PASSWORD': 'tdorCPSWkhtmeKvcSzQRUPgi2Dun4p0s',  # Senha
-        'HOST': 'dpg-ctji3hrqf0us739cbepg-a.oregon-postgres.render.com',  # Host externo
-        'PORT': '5432',                # Porta padrão do PostgreSQL
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT',cast=int),
     }
 }
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
