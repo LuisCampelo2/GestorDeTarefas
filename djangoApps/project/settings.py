@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('MYSQL_DB'),
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': os.getenv('MYSQL_HOST'),
-        'PORT': os.getenv('MYSQL_PORT', 3306),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('MYSQL_DATABASE'),  # Nome do banco de dados
+        'USER': os.getenv('MYSQL_USER'),  # Usuário do banco de dados
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),  # Senha do banco de dados
+        'HOST': os.getenv('MYSQL_HOST'),  # Host do banco de dados (deve ser mysql.railway.internal)
+        'PORT': os.getenv('MYSQL_PORT', 3306),  # Porta (definido no Railway como 3306)
     }
 }
 
