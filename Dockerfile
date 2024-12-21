@@ -29,9 +29,4 @@ EXPOSE 8000
 ENV DJANGO_SETTINGS_MODULE=project.settings
 
 # Executa os comandos na ordem desejada
-CMD /bin/sh -c "/scripts/wait_mysql.sh && \
-                /scripts/makemigrations.sh && \
-                /scripts/migrate.sh && \
-                /scripts/collectstatic.sh && \
-                /scripts/commands.sh && \
-                gunicorn djangoApps.wsgi:application --bind 0.0.0.0:8000"
+CMD ["/bin/sh", "/scripts/commands.sh"]
