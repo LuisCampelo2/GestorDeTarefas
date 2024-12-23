@@ -33,23 +33,25 @@ def login_view(request):
     return render(request,'home/pages/login.html',context)
 
 def criarconta(request):
-    form_action = reverse('home:criarconta')
+    form_action = reverse('home:criarconta')  # Certifique-se de que a URL está correta.
 
     if request.method == 'POST':
         form = RegisterUser(request.POST)
         if form.is_valid():
-            form.save()  # Salva os dados do formulário no banco.
-            # Você pode redirecionar ou enviar uma mensagem de sucesso aqui.
-            return redirect('home:index')  # Exemplo de redirecionamento após o cadastro.
+            user = form.save(commit=False)  # Cria o usuário sem salvar diretamente.
+            user.set_password(form.cleaned_data['password1'])  # Define a senha corretamente.
+            user.save()  # Salva o usuário no banco.
+            auth.login(request, user)  # Faz o login automático.
+            return redirect('home:index')  # Redireciona para a página inicial após o cadastro.
 
     else:
-        form = RegisterUser()  # Cria um formulário vazio para exibir no método GET.
+        form = RegisterUser()  # Formulário vazio para o método GET.
 
     context = {
         'form': form,
-        'form_action': form_action
+        'form_action': form_action,
     }
-    return render(request,'home/pages/criarconta.html',context)
+    return render(request, 'home/pages/criarconta.html', context)
 
 @login_required
 def logout_view(request):
