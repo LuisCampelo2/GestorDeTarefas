@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from .models import *
-
+ 
 # Formulario para criar usauario
 class RegisterUser(UserCreationForm):
     first_name = forms.CharField(
@@ -46,7 +46,36 @@ class RegisterUser(UserCreationForm):
             'first_name', 'last_name', 'email',
             'username', 'password1', 'password2',
         )
-        
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        # Verifica se o e-mail já está em uso
+        if User.objects.filter(email=email).exists():
+            raise ValidationError('Já existe este e-mail.', code='invalid')
+        return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        # Verifica se o nome de usuário já está em uso
+        if User.objects.filter(username=username).exists():
+            raise ValidationError('Este nome de usuário já está em uso.', code='invalid')
+        return username
+
+    def clean_password1(self):
+        password1 = self.cleaned_data.get('password1')
+        # Verifica se a senha tem pelo menos 8 caracteres
+        if len(password1) < 8:
+            raise ValidationError('A senha deve ter pelo menos 8 caracteres.')
+        return password1
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+
+        # Verifica se as senhas coincidem
+        if password1 != password2:
+            raise ValidationError('As senhas não coincidem.')
+        return password2
+    
 class TarefaForm(forms.ModelForm):
     class Meta:
         model = Tarefas
