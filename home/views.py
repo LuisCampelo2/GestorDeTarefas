@@ -45,6 +45,7 @@ def criarconta(request):
             return redirect('home:index')  # Redireciona para a página inicial após o cadastro.
 
     else:
+        print(form.errors)
         form = RegisterUser()  # Formulário vazio para o método GET.
 
     context = {
