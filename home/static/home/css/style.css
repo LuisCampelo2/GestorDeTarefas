@@ -198,6 +198,19 @@ body {
   transform: scale(1.03);
 }
 
+.erros_criar_conta {
+  color: red;  /* Cor do texto de erro */
+  font-size: 14px;  /* Tamanho da fonte */
+  margin-top: 5px;  /* Espaço acima da mensagem de erro */
+  padding: 5px;  /* Espaço dentro da caixa */
+  border: 1px solid red;  /* Borda vermelha para destacar os erros */
+  border-radius: 4px;  /* Borda arredondada */
+  background-color: #f8d7da;  /* Fundo vermelho claro */
+  width: 100%;  /* Largura total do campo */
+  box-sizing: border-box;  /* Inclui o padding e a borda na largura total */
+}
+
+
 /* Estilo geral para a tabela */
 .table_index {
   width: 100%;

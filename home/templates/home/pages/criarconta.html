@@ -10,7 +10,12 @@
         {% for field in form %}
             <label for="{{field.id_for_label}}">{{field.label}}</label>
             {{field}}
-            {{field.errors}}
+            {% if field.errors  %}
+                <div class="erros_criar_conta">
+                    {{field.errors}}
+                </div>
+            {% endif %}
+            
             
         {% endfor %}
         <button class= button type="submit">Criar Conta</button>
