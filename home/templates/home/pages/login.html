@@ -11,7 +11,7 @@
         {% for field in form %}
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field }}
-            {{field.errors}}
+            {{form.non_field_errors}}
         {% endfor %}
 
         <button type="submit">entrar</button>
